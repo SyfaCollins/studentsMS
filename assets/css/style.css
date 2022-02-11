@@ -1,0 +1,65 @@
+*{
+    padding:0;
+    margin: 0;
+}
+#nav{
+
+    /* background-color: yellow; */
+    padding: 2rem;
+    /* padding-left:0 ; */
+}
+.container{
+    display: flex;
+    padding-left: 2em;
+    justify-content: flex-end;
+    margin: 0;
+
+    /* flex-direction: column; */
+}
+
+
+.heading{
+    
+    background-color: blue;
+    font-size: 50px;
+    font-weight: 900;
+    padding: 2rem;
+    width: 100%;
+    color: white;
+    
+}
+/* .header,nav{
+    position: fixed;
+} */
+
+/* Container Home */
+
+.container-home {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+    margin: 2rem;
+
+}
+
+.container-home >p{
+    width: 50%;
+
+}
+
+/* forms */
+
+#signup-form{
+    margin: auto;
+
+}
+
+.container-signup{
+    margin: 2rem;
+    width: 40%;
+    margin: auto;
+    margin-top: 2rem;
+
+
+
+}
