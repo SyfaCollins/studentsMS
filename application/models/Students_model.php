@@ -3,14 +3,6 @@
 
 class Students_model extends CI_Model{
 
-//    <!-- public $username;
-//    public $email;
-//    public $password;
-//    public $address
-//    public $retypePassword;
-//    public $city;
-//    public $submit;
-//  -->
 
    public function getStudents(){
     
@@ -19,6 +11,19 @@ class Students_model extends CI_Model{
 
     $query = $this->db->get('students');
     return $query -> result_array();
+
+   }
+
+   public function valid_user($username,$password){
+      $this->db->where('username', $username);
+      $this->db->where('password', $password);
+      $query = $this->db->get('students');
+
+      if($query->num_rows() > 0){
+         return true;
+      }else{
+         return false;
+      }
 
    }
 
