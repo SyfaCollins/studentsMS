@@ -30,6 +30,7 @@ class Student extends CI_Controller {
 
 	}
 
+	
 
 	public function admin()
 	{
@@ -37,14 +38,24 @@ class Student extends CI_Controller {
 		// $this->load->model('Students_model');
 
 		$data['outPut'] = $this->Students_model->getStudents();
-
 		$this->load->view('templates/header');
+
+		if($this->session->userdata('username')){
 		$this->load->view('pages/admin', $data);
+		}
+		else{
+		$this->load->view('pages/login');
+	
+		}
+
 		$this->load->view('templates/footer');
 
 	}
 
 	public function login_user(){
+
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
 
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[15]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]|max_length[10]');
@@ -57,38 +68,29 @@ class Student extends CI_Controller {
 
 		$this->load->view('templates/header');
 		$this->load->view('pages/login');
+
 		$this->load->view('templates/footer');
 		}
 		else
 		{
 
 			//retrieve data
-			$username = $this->input->post('username');
-			$password = $this->input->post('password');
+			
 
 			//access the model function
 			$user = $this->Students_model->valid_user($username, $password);
 
+			$session_data = array(
+				'username' => $username
+			);
+
+			$userData = $this->session->set_userdata($session_data);
+	
+
 			if($user)
 			{
-
-				$session_data = array(
-					'username' => $username
-				);
-
-				$this->session->set_userdata($session_data);
+				$userData;
 				redirect('Student/admin');
-
-			
-
-
-				// if( != ''){
-
-
-				// }else{
-				// redirect('Student/login');
-					
-				// }
 			
 			}
 			else
@@ -105,9 +107,20 @@ class Student extends CI_Controller {
 
 
 	public function logout_user(){
-		$this->session->unset_userdata('username');
+
+		$removeData = $this->session->unset_userdata('username');
+		$removeData;
+
+		session_destroy();
+		
 		redirect('Student/login');
+
+
 
 	}
 
+
+
 }
+
+
