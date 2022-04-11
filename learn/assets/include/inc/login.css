@@ -1,0 +1,25 @@
+body{
+    background-color: aqua;
+}
+#login-form-container{
+    margin-top: 10rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.btn{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.alarm{
+    color: red;
+    font-weight: bold;
+    line-height: 3rem;
+    width: 10rem;
+    text-align: center;
+    background-color: bisque;
+}

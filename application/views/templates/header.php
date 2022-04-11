@@ -29,7 +29,7 @@
     <?php 
     $print = "<button class='btn btn-primary'>Admin</button>";
 
-    echo anchor('Student/Admin', $print) 
+    echo anchor('Student/admin', $print) 
     ?>
     
     </div>
